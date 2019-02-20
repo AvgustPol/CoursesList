@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LearningAspNetCore_CoursesList.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace LearningAspNetCore_CoursesList.Models
         public MyApplicationDbContext(DbContextOptions<MyApplicationDbContext> dbContextOptions) : base(dbContextOptions)
         {
         }
+
+        public DbSet<Course> Courses { get; set; }
     }
 }
