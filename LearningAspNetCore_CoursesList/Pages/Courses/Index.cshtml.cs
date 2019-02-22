@@ -14,6 +14,8 @@ namespace LearningAspNetCore_CoursesList.Pages.Courses
     {
         private readonly MyApplicationDbContext _dbContext;
 
+        public bool IsCoursesAvaible => Courses.Count() != 0;
+
         public IEnumerable<Course> Courses { get; set; }
 
         public IndexModel(MyApplicationDbContext dbContext)
