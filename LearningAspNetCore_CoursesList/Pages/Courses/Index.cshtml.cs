@@ -36,13 +36,13 @@ namespace LearningAspNetCore_CoursesList.Pages.Courses
             var courseToDelete = await _dbContext.Courses.FindAsync(id);
             if (courseToDelete == null)
             {
-                return NotFound($"There is no course with id = {id}");
+                return NotFound(AlertMessages.ThereIsNoCourseWithId(id));
             }
 
             _dbContext.Courses.Remove(courseToDelete);
             await _dbContext.SaveChangesAsync();
 
-            Message = "Deleted successfully!";
+            Message = AlertMessages.OnDeleteMessage;
             return RedirectToPage();
         }
     }

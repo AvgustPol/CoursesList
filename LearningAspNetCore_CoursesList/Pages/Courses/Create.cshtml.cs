@@ -18,6 +18,9 @@ namespace LearningAspNetCore_CoursesList.Pages.Courses
             _dbContext = dbContext;
         }
 
+        [TempData]
+        public string Message { get; set; }
+
         [BindProperty]
         public Course Course { get; set; }
 
@@ -34,6 +37,7 @@ namespace LearningAspNetCore_CoursesList.Pages.Courses
 
             await _dbContext.Courses.AddAsync(Course);
             await _dbContext.SaveChangesAsync();
+            Message = AlertMessages.OnCreateMessage;
             return RedirectToPage("Index");
         }
     }
