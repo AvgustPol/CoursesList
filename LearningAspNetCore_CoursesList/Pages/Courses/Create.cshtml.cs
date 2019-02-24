@@ -25,7 +25,7 @@ namespace LearningAspNetCore_CoursesList.Pages.Courses
         {
         }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {

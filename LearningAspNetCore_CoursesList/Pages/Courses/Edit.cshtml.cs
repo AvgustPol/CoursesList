@@ -21,9 +21,25 @@ namespace LearningAspNetCore_CoursesList.Pages.Courses
         [BindProperty]
         public Course Course { get; set; }
 
-        public void OnGet(int id)
+        public async Task OnGetAsync(int id)
         {
-            Course = _dbContext.Courses.Find(id);
+            Course = await _dbContext.Courses.FindAsync(id);
+        }
+
+        public async Task<IActionResult> OnPostAsync(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                var course = await _dbContext.Courses.FindAsync(id);
+                course.Name = Course.Name;
+                course.Description = Course.Description;
+                course.Author = Course.Author;
+
+                await _dbContext.SaveChangesAsync();
+                return RedirectToPage("Index");
+            }
+
+            return RedirectToPage();
         }
     }
 }
