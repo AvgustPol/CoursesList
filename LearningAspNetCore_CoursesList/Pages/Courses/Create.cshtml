@@ -1,0 +1,52 @@
+﻿@page
+@model LearningAspNetCore_CoursesList.Pages.Courses.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create a new course!</h1>
+
+<br />
+<div class="row">
+    <div class="col-12">
+        <div class="border">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="container" style="padding:30px">
+                    <div class="form-group ">
+                        <div class="row">
+                            <div class="col-sm-4"> <label asp-for="Course.Name"></label></div>
+                            <div class="col-sm-8">
+                                <input asp-for="Course.Name" class="form-control" />
+                                <strong><span class="text-danger" asp-validation-for="Course.Name"></span></strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="row">
+                            <div class="col-sm-4"> <label asp-for="Course.Author"></label></div>
+                            <div class="col-sm-8"> <input asp-for="Course.Author" class="form-control" /></div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="row">
+                            <div class="col-sm-4"> <label asp-for="Course.Description"></label></div>
+                            <div class="col-sm-8"> <textarea asp-for="Course.Description" class="form-control"></textarea> </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="row">
+                            <div class="col-4 offset-4"> <a asp-page="Index" class="btn btn-light form-control">Cancel</a> </div>
+                            <div class="col-4 "> <input type="submit" value="Create :)" class="btn btn-outline-success form-control"></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
