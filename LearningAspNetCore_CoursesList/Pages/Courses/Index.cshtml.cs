@@ -14,17 +14,16 @@ namespace LearningAspNetCore_CoursesList.Pages.Courses
     {
         private readonly MyApplicationDbContext _dbContext;
 
-        public bool IsCoursesAvaible => Courses.Count() != 0;
-
-        [TempData]
-        public string Message { get; set; }
-
-        public IEnumerable<Course> Courses { get; set; }
-
         public IndexModel(MyApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
+
+        public IEnumerable<Course> Courses { get; set; }
+        public bool IsCoursesAvaible => Courses.Count() != 0;
+
+        [TempData]
+        public string Message { get; set; }
 
         public async Task OnGetAsync()
         {

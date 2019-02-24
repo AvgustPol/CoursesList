@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LearningAspNetCore_CoursesList.Models;
+﻿using LearningAspNetCore_CoursesList.Models;
 using LearningAspNetCore_CoursesList.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 namespace LearningAspNetCore_CoursesList.Pages.Courses
 {
@@ -18,11 +15,11 @@ namespace LearningAspNetCore_CoursesList.Pages.Courses
             _dbContext = dbContext;
         }
 
-        [TempData]
-        public string Message { get; set; }
-
         [BindProperty]
         public Course Course { get; set; }
+
+        [TempData]
+        public string Message { get; set; }
 
         public async Task OnGetAsync(int id)
         {
