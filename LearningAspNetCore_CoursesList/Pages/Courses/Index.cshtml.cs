@@ -23,9 +23,22 @@ namespace LearningAspNetCore_CoursesList.Pages.Courses
             _dbContext = dbContext;
         }
 
-        public async Task OnGet()
+        public async Task OnGetAsync()
         {
             Courses = await _dbContext.Courses.ToListAsync();
+        }
+
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            var courseToDelete = await _dbContext.Courses.FindAsync(id);
+            if (courseToDelete == null)
+            {
+                return NotFound($"There is no course with id = {id}");
+            }
+
+            _dbContext.Courses.Remove(courseToDelete);
+            await _dbContext.SaveChangesAsync();
+            return RedirectToPage();
         }
     }
 }

@@ -15,78 +15,86 @@
 </div>
 <br />
 
-@if (Model.IsCoursesAvaible)
-{
-    <div class="table-responsive">
-        <table class="table table-striped border">
-            <tr class="table-info">
-                <th>
-                    @Html.DisplayNameFor(m => m.Courses.FirstOrDefault().Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(m => m.Courses.FirstOrDefault().Author)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(m => m.Courses.FirstOrDefault().Description)
-                </th>
-                <th></th>
-            </tr>
-            @foreach (var course in Model.Courses)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(c => course.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(c => course.Author)
-                    </td>
-                    <td style="width: 40%">
-                        @Html.DisplayFor(c => course.Description)
-                    </td>
-                    <td class="text-right">
-                        <a class="btn btn-danger btn-sm" asp-page="Delete" asp-route-id="@course.Id">Delete</a>
-                        <a class="btn btn-success btn-sm" asp-page="Edit" asp-route-id="@course.Id">Edit</a>
-                    </td>
+<form method="post">
+    @if (Model.IsCoursesAvaible)
+    {
+        <div class="table-responsive">
+            <table class="table table-striped border">
+                <tr class="table-info">
+                    <th>
+                        @Html.DisplayNameFor(m => m.Courses.FirstOrDefault().Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Courses.FirstOrDefault().Author)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Courses.FirstOrDefault().Description)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </table>
+                @foreach (var course in Model.Courses)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(c => course.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(c => course.Author)
+                        </td>
+                        <td style="width: 40%">
+                            @Html.DisplayFor(c => course.Description)
+                        </td>
+                        <td class="text-right">
+                            <button type="submit"
+                                    onclick="return confirm('Are you sure you want to delete [@course.Name] course? ')"
+                                    class="btn btn-danger btn-sm"
+                                    asp-page-handler="Delete"
+                                    asp-route-id="@course.Id">
+                                Delete
+                            </button>
+                            <a class="btn btn-success btn-sm" asp-page="Edit" asp-route-id="@course.Id">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </table>
 
-        <br /> <h1>Just comparing DisplayFor with object using </h1><br />
-        <table class="table table-striped border">
-            <tr class="table-info">
-                <th>
-                    @Html.DisplayNameFor(m => m.Courses.FirstOrDefault().Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(m => m.Courses.FirstOrDefault().Author)
-                </th>
-                <th style="width: 40%">
-                    @Html.DisplayNameFor(m => m.Courses.FirstOrDefault().Description)
-                </th>
-                <th></th>
-            </tr>
-            @foreach (var course in Model.Courses)
-            {
-                <tr>
-                    <td>
-                        @course.Name
-                    </td>
-                    <td>
-                        @course.Author
-                    </td>
-                    <td>
-                        @course.Description
-                    </td>
-                    <td class="text-right">
-                        <a class="btn btn-danger btn-sm" href="#">Delete</a>
-                        <a class="btn btn-success btn-sm" asp-page="Edit" asp-route-id="@course.Id">Edit</a>
-                    </td>
+            <br /> <h1>Just comparing DisplayFor with object using </h1><br />
+            <table class="table table-striped border">
+                <tr class="table-info">
+                    <th>
+                        @Html.DisplayNameFor(m => m.Courses.FirstOrDefault().Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Courses.FirstOrDefault().Author)
+                    </th>
+                    <th style="width: 40%">
+                        @Html.DisplayNameFor(m => m.Courses.FirstOrDefault().Description)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </table>
-    </div>
-}
-else
-{
-    <h1>Zero courses avaible</h1>
-}
+                @foreach (var course in Model.Courses)
+                {
+                    <tr>
+                        <td>
+                            @course.Name
+                        </td>
+                        <td>
+                            @course.Author
+                        </td>
+                        <td>
+                            @course.Description
+                        </td>
+                        <td class="text-right">
+                            <a class="btn btn-danger btn-sm" href="#">Delete</a>
+                            <a class="btn btn-success btn-sm" asp-page="Edit" asp-route-id="@course.Id">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+    else
+    {
+        <h1>Zero courses avaible</h1>
+    }
+</form>
