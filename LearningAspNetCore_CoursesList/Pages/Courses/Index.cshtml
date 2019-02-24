@@ -44,7 +44,7 @@
                         @Html.DisplayFor(c => course.Description)
                     </td>
                     <td class="text-right">
-                        <a class="btn btn-danger btn-sm" href="#">Delete</a>
+                        <a class="btn btn-danger btn-sm" asp-page="Delete" asp-route-id="@course.Id">Delete</a>
                         <a class="btn btn-success btn-sm" asp-page="Edit" asp-route-id="@course.Id">Edit</a>
                     </td>
                 </tr>
