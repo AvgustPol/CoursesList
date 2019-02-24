@@ -16,6 +16,9 @@ namespace LearningAspNetCore_CoursesList.Pages.Courses
 
         public bool IsCoursesAvaible => Courses.Count() != 0;
 
+        [TempData]
+        public string Message { get; set; }
+
         public IEnumerable<Course> Courses { get; set; }
 
         public IndexModel(MyApplicationDbContext dbContext)
@@ -38,6 +41,8 @@ namespace LearningAspNetCore_CoursesList.Pages.Courses
 
             _dbContext.Courses.Remove(courseToDelete);
             await _dbContext.SaveChangesAsync();
+
+            Message = "Deleted successfully!";
             return RedirectToPage();
         }
     }
