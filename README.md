@@ -12,7 +12,7 @@ Materiały szkoleniowe - kurs Udemy ["ASP.NET Core 2.2 Razor Pages"](https://www
 ## [Rus]  
 
 Этот проект создан для более детального изучения основ и более продвинутых техник **ASP.NET Core 2.2**  
-Учебные материалы - курс " Удемы ["ASP.NET Core 2.2 Razor Pages"](https://www.udemy.com/share/100QKOB0YYcVxSTH4=/)  
+Учебные материалы - курс Udemy ["ASP.NET Core 2.2 Razor Pages"](https://www.udemy.com/share/100QKOB0YYcVxSTH4=/)  
 
 # Preview:  
 ### Courses list:  
